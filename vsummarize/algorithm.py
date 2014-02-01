@@ -41,4 +41,4 @@ def summarize(timestamps, videolen):
 if __name__ == '__main__':
     timestamps = [u'1:46', u'1:51', u'00:40', u'1:43', u'1:35',
                 u'1:44', u'1:47', u'2:22', u'02:48', u'1:21', u'1:32',
-                u'1:39']
+                unewspaper'1:39']
