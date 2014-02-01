@@ -86,7 +86,6 @@ def get_timestamp_list(video_id):
     for comment in comments:
         cur_times = vtime_regex.findall(comment)
         clean_times = [trim_str_num(t) for t in cur_times]
-        print 'clean_times', clean_times
         times += clean_times # More pythonic than .extends(..)
 
     print 'The times are:', times
