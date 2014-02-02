@@ -39,14 +39,22 @@ def print_test(method):
 class AlgorithmTestCase(unittest.TestCase):
     def runTest(self):
         self.sort_timestamp_test()
+        self.conversion_test()
+
+    @print_test
+    def conversion_test(self):
+        assert algorithm.convert_to_seconds(u'1:40') == 100
 
     @print_test
     def sort_timestamp_test(self):
         timestamps = [u'1:46', u'1:51', u'00:40', u'1:43', u'1:35', u'1:44',
                 u'1:47', u'2:22', u'02:48', u'1:21', u'1:32', u'1:39']
         sorted_times = algorithm.sort_timestamps(timestamps)
+        SORTED_TIMES = [u'00:40', u'1:21', u'1:32', u'1:35', u'1:39',
+                u'1:43', u'1:44', u'1:46', u'1:47', u'1:51', u'2:22', u'02:48']
 
-        print 'sorted times', sorted_times, 'old times', timestamps
+        assert sorted_times == SORTED_TIMES
+        # print 'sorted times', sorted_times, 'old times', timestamps
 
 if __name__ == '__main__':
     # unittest.main() # run all units and their cases
