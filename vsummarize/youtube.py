@@ -34,7 +34,16 @@ def comments_generator(client, video_id):
                 comment_feed = None
                 break
 
-def get_yt_comments(video_id):
+def get_duration(client, video_id):
+    """
+    Returns in string format the duration of this video in seconds.
+    """
+    video = client.GetYouTubeVideoEntry(video_id=video_id)
+    if video and video.media and video.media.seconds:
+        return video.media.seconds
+    return ''
+
+def get_yt_comments(client, video_id):
     """
     Extracts out the youtube comments for a particular video in an
     array form. We only note the comment body, not author name, etc.
@@ -46,10 +55,6 @@ def get_yt_comments(video_id):
     per video anyways. We auth with a custom google application key.
     """
     API_LIMIT = 550
-
-    client = service.YouTubeService()
-    client.ClientLogin(google_username, google_password)
-
     # import codecs
     # f = codecs.open('comments.txt', 'w', 'utf8')
     count = 1
@@ -75,21 +80,33 @@ def trim_str_num(s):
     timestamp_arr = [c for c in s if c.isdigit() or c == ':']
     return ''.join(timestamp_arr)
 
-def get_timestamp_list(video_id):
+def get_timestamp_list(client, video_id):
     """
     Returns a sorted list of all timestamps present in any comment
     of this selected youtube video.
     """
     vtime_regex = re.compile(u'[\d\s\w]{0,1}\d:\d\d')
-    comments = get_yt_comments(video_id=video_id)
+    comments = get_yt_comments(client=client, video_id=video_id)
     times = []
     for comment in comments:
         cur_times = vtime_regex.findall(comment)
         clean_times = [trim_str_num(t) for t in cur_times]
         times += clean_times # More pythonic than .extends(..)
-
-    print 'The times are:', times
     return times
 
+def get_client():
+    """
+    Returns a gdata client for this youtube video.
+    """
+    client = service.YouTubeService()
+    client.ClientLogin(google_username, google_password)
+    return client
+
 if __name__ == '__main__':
-    timestamps = get_timestamp_list(video_id='p5HXQ1HFDgA')
+    client = get_client()
+    video_id = 'p5HXQ1HFDgA'
+    timestamps = get_timestamp_list(client=client, video_id=video_id)
+    duration_seconds = get_duration(client, video_id=video_id)
+
+    print 'The times are:', timestamps
+    print 'The duratioj is:', duration_seconds
