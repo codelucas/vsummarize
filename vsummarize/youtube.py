@@ -1,7 +1,10 @@
 #!/usr/bin/env python2.7
-"""
-Written by Lucas Ou-Yang. MIT licensed. Copyright 2014.
-"""
+# -*- coding: utf-8 -*-
+__title__ = 'vSummarize'
+__author__ = 'Lucas Ou-Yang'
+__license__ = 'MIT'
+__copyright__ = 'Copyright 2014, Lucas Ou-Yang'
+
 import re
 from settings import google_username, google_password
 from gdata.youtube import service
@@ -54,7 +57,7 @@ def get_yt_comments(client, video_id):
     Also, the standard google api restriction is 1000 most recent comments
     per video anyways. We auth with a custom google application key.
     """
-    API_LIMIT = 550
+    API_LIMIT = 600
     # import codecs
     # f = codecs.open('comments.txt', 'w', 'utf8')
     count = 1

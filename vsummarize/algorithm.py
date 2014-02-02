@@ -7,7 +7,6 @@ __copyright__ = 'Copyright 2014, Lucas Ou-Yang'
 
 # from moviepy.editor import *
 
-
 def convert_to_seconds(timestamp):
     """
     Takes a string timestamp: [\d]{0,1}\d:\d\d and
@@ -29,7 +28,17 @@ def sort_timestamps(timestamps):
     """
     return sorted(timestamps, key=lambda num: convert_to_seconds(num))
 
-def get_hotspots(timestamps):
+def hotness_delta(video_duration):
+    """
+    Hotness delta is the number of seconds apart where
+    two timestamps are considered to be referencing same event.
+
+    For us, this is dependent on the length of the video. A
+    longer video will have a longer hotness delta.
+    """
+    pass
+
+def get_hotspots(timestamps, video_duration):
     """
     Input list of sorted timestamps.
     We will now compute hotspot points; a hotspot point is a
@@ -42,17 +51,27 @@ def get_hotspots(timestamps):
     Sort our hot-clips by position in video and combine into a
     video summary!
     """
+    sorted_times = sort_timestamps(timestamps)
+    delta = hotness_delta(video_duration)
+
+def expand_hotspots(hotspots, video_duration):
+    """
+    Inputs a list of hot timestamps, expands each one into a
+    "hot clip".
+
+    A hotclip is a (timestampA, timestampB) tuple while a
+    hotspot is just a timestamp. So we will be returning a
+    list of tuples.
+    """
     pass
 
-def summarize(timestamps, videolen):
+def summarize(timestamps, video_duration):
     """
     Inputs a list of comment timestamps along with total
     video length.
 
     Combines hot-clips points together to form a summarized video.
     """
-    pass
+    hotspots = get_hotspots(timestamps, video_duration)
+    hotclips = expand_hotspots(hotspots, video_duration)
 
-if __name__ == '__main__':
-    timestamps = [u'1:46', u'1:51', u'00:40', u'1:43', u'1:35', u'1:44',
-                u'1:47', u'2:22', u'02:48', u'1:21', u'1:32', u'1:39']
