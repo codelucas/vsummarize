@@ -39,8 +39,8 @@ def get_duration(client, video_id):
     Returns in string format the duration of this video in seconds.
     """
     video = client.GetYouTubeVideoEntry(video_id=video_id)
-    if video and video.media and video.media.seconds:
-        return video.media.seconds
+    if video and video.media and video.media.duration and video.media.duration.seconds:
+        return video.media.duration.seconds
     return ''
 
 def get_yt_comments(client, video_id):
@@ -109,4 +109,4 @@ if __name__ == '__main__':
     duration_seconds = get_duration(client, video_id=video_id)
 
     print 'The times are:', timestamps
-    print 'The duratioj is:', duration_seconds
+    print 'The duration is:', duration_seconds

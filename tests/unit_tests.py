@@ -42,12 +42,16 @@ class AlgorithmTestCase(unittest.TestCase):
 
     @print_test
     def sort_timestamp_test(self):
-        pass
+        timestamps = [u'1:46', u'1:51', u'00:40', u'1:43', u'1:35', u'1:44',
+                u'1:47', u'2:22', u'02:48', u'1:21', u'1:32', u'1:39']
+        sorted_times = algorithm.sort_timestamps(timestamps)
+
+        print 'sorted times', sorted_times, 'old times', timestamps
 
 if __name__ == '__main__':
     # unittest.main() # run all units and their cases
 
     suite = unittest.TestSuite()
-
     suite.addTest(AlgorithmTestCase())
+
     unittest.TextTestRunner().run(suite)

@@ -8,11 +8,26 @@ __copyright__ = 'Copyright 2014, Lucas Ou-Yang'
 from moviepy.editor import *
 
 
+def convert_to_seconds(timestamp):
+    """
+    Takes a string timestamp: [\d]{0,1}\d:\d\d and
+    returns an int representing the number of seconds.
+    """
+    if ':' not in timestamp:
+        raise Exception('Funky shit happening w/ timestamps')
+
+    minutes = 0
+    seconds = 0
+    seconds = int(timestamp.split(':')[1])
+    minutes = int(timestamp.split(':')[0])
+
+    return (minutes * 60) + seconds
+
 def sort_timestamps(timestamps):
     """
     Sort string timestamps by earliest-latest order
     """
-    pass
+    return sorted(timestamps, key=lambda num: convert_to_seconds(num))
 
 def get_hotspots(timestamps):
     """
@@ -39,6 +54,5 @@ def summarize(timestamps, videolen):
     pass
 
 if __name__ == '__main__':
-    timestamps = [u'1:46', u'1:51', u'00:40', u'1:43', u'1:35',
-                u'1:44', u'1:47', u'2:22', u'02:48', u'1:21', u'1:32',
-                unewspaper'1:39']
+    timestamps = [u'1:46', u'1:51', u'00:40', u'1:43', u'1:35', u'1:44',
+                u'1:47', u'2:22', u'02:48', u'1:21', u'1:32', u'1:39']
