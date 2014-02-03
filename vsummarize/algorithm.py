@@ -14,12 +14,11 @@ def convert_to_seconds(timestamp):
     """
     if ':' not in timestamp:
         raise Exception('Funky shit happening w/ timestamps')
-
     minutes = 0
     seconds = 0
-    seconds = int(timestamp.split(':')[1])
-    minutes = int(timestamp.split(':')[0])
-
+    tsplit = timestamp.split(':')
+    seconds = int(tsplit[1])
+    minutes = int(tsplit[0])
     return (minutes * 60) + seconds
 
 def sort_timestamps(timestamps):
@@ -36,11 +35,18 @@ def hotness_delta(video_duration):
     For us, this is dependent on the length of the video. A
     longer video will have a longer hotness delta.
     """
-    pass
+    if not isinstance(video_duration, int):
+        video_duration = int(video_duration)
+    if video_duration < 10:
+        return 1
+    elif video_duration < 120:
+        return 3
+    elif video_duration < 300:
+        return 6
+    return 10
 
 def get_hotspots(timestamps, video_duration):
     """
-    Input list of sorted timestamps.
     We will now compute hotspot points; a hotspot point is a
     timestamp point with a higher proportion of other timestamps
     close to it.  Assert length(hotspots) < length(timestamps).
@@ -53,6 +59,22 @@ def get_hotspots(timestamps, video_duration):
     """
     sorted_times = sort_timestamps(timestamps)
     delta = hotness_delta(video_duration)
+    seen = {}
+
+    for i, time in enumerate(sorted_times):
+        for j, other_time in enumerate(sorted_times):
+            if i == j:
+                continue
+            if i in seen or j in seen:
+                continue
+            i_time = convert_to_seconds(time)
+            i_other_time = convert_to_seconds(other_time)
+
+            if abs(i_time - i_other_time) <= delta:
+                seen[i] = time
+                seen[j] = time
+
+    return seen.values()
 
 def expand_hotspots(hotspots, video_duration):
     """
@@ -63,7 +85,11 @@ def expand_hotspots(hotspots, video_duration):
     hotspot is just a timestamp. So we will be returning a
     list of tuples.
     """
-    pass
+    delta = hotness_delta(video_duration)
+    expanded_spots = []
+    for hotspot in hotspots:
+        expanded_spots.append( (hotspot-delta, hotspot+delta) )
+    return expanded_spots
 
 def summarize(timestamps, video_duration):
     """

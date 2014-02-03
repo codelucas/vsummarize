@@ -57,7 +57,7 @@ def get_yt_comments(client, video_id):
     Also, the standard google api restriction is 1000 most recent comments
     per video anyways. We auth with a custom google application key.
     """
-    API_LIMIT = 600
+    API_LIMIT = 550
     # import codecs
     # f = codecs.open('comments.txt', 'w', 'utf8')
     count = 1

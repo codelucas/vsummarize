@@ -3,6 +3,7 @@ settings.py
 *.avi
 *.mp4
 videos
+moviepy
 
 .DS_Store
 .idea
