@@ -45,7 +45,7 @@ class GeneralUnitTestCases(unittest.TestCase):
         self.video_id = 'p5HXQ1HFDgA'
 
         self.conversion_test()
-        self.get_timestamps_test()
+        # self.get_timestamps_test()
         self.sort_timestamp_test()
         self.get_hotspot_test()
 

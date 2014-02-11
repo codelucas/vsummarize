@@ -58,14 +58,14 @@ def get_hotspots(timestamps, video_duration):
     video summary!
     """
     sorted_times = sort_timestamps(timestamps)
-    delta = hotness_delta(video_duration)
+    delta = 2#hotness_delta(video_duration)
     seen = {}
-
+    print 'delta:', delta
     for i, time in enumerate(sorted_times):
         for j, other_time in enumerate(sorted_times):
             if i == j:
                 continue
-            if i in seen or j in seen:
+            if i in seen:
                 continue
             i_time = convert_to_seconds(time)
             i_other_time = convert_to_seconds(other_time)
@@ -73,10 +73,13 @@ def get_hotspots(timestamps, video_duration):
             if abs(i_time - i_other_time) <= delta:
                 seen[i] = time
                 seen[j] = time
+            else:
+                seen[i] = time
 
-    return seen.values()
+    uniq = list(set(seen.values()))
+    return sort_timestamps(uniq)
 
-def expand_hotspots(hotspots, video_duration):
+def expand_timestamps(timestamps, video_duration):
     """
     Inputs a list of hot timestamps, expands each one into a
     "hot clip".

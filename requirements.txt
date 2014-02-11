@@ -1,0 +1,7 @@
+argparse
+decorator
+gdata==2.0.18
+moviepy==0.2.1.6.92
+numpy==1.8.0
+wsgiref
+youtube-dl
