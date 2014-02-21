@@ -50,6 +50,7 @@ class GeneralUnitTestCases(unittest.TestCase):
         self.sort_timestamp_test()
         self.get_hotspot_test()
         self.expand_hotspot_test()
+        self.video_summarize_test()
 
     @print_test
     def conversion_test(self):
@@ -75,9 +76,6 @@ class GeneralUnitTestCases(unittest.TestCase):
         HOTSPOTS = [(u'00:40', 1), (u'1:21', 1), (u'1:32', 3), (u'1:43', 4),
                 (u'1:51', 1), (u'2:22', 1), (u'02:48', 1)]
         self.hotspots = algorithm.get_hotspots(self.sorted_times, self.DURATION)
-        #print 'timestamps', self.sorted_times
-        #print '\r\n'
-        print 'hotspots', self.hotspots
         assert self.hotspots == HOTSPOTS
 
     @print_test
@@ -89,11 +87,16 @@ class GeneralUnitTestCases(unittest.TestCase):
 
     @print_test
     def expand_hotspot_test(self):
-        print 'hotspot clips', algorithm.expand_hotspots(self.hotspots, self.DURATION)
+        self.HOTCLIPS = [(37, 43), (78, 84), (89, 95), (100, 106), (108, 114),
+                (139, 145), (165, 171)]
+        self.hotclips = algorithm.expand_hotspots(self.hotspots, self.DURATION)
+        assert self.hotclips == self.HOTCLIPS
 
     @print_test
     def video_summarize_test(self):
-        pass
+        hotclips = algorithm.summarize(self.TIMESTAMPS, self.DURATION)
+        #print hotclips
+        assert hotclips == self.HOTCLIPS
 
 if __name__ == '__main__':
     # unittest.main() # run all units and their cases

@@ -99,8 +99,6 @@ def get_hotspots(timestamps, video_duration):
             i_other_time = convert_to_seconds(other_time)
 
             if abs(i_time - i_other_time) <= delta:
-                #if time != other_time:
-                # very subtle bug, if we have duplicate times
                 killed[other_time] = True
                 hit_counter[time] += 1
             else:
@@ -108,7 +106,6 @@ def get_hotspots(timestamps, video_duration):
 
     hotspots = [ (time, hit_counter[time]) for time in sorted_times
                                     if time not in killed ]
-    #print 'sorted hotspots', [  ]
     return hotspots
 
 def expand_hotspots(hotspots, video_duration, max_subclips=10):
@@ -146,6 +143,9 @@ def summarize(timestamps, video_duration):
 
     Combines hot-clips points together to form a summarized video.
     """
-    hotspots = get_hotspots(timestamps, video_duration)
+    unique_times = unique_timestamps(timestamps)
+    sorted_times = sort_timestamps(unique_times)
+    hotspots = get_hotspots(sorted_times, video_duration)
     hotclips = expand_hotspots(hotspots, video_duration)
+    return hotclips
 
