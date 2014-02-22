@@ -9,4 +9,11 @@ CLIPS: [(41, 47)]
 Making file solution.mp4 ...
 Rendering audio TEMP_MPY_to_videofile_SOUND.mp3
 |----------| 0/7   0% [elapsed: 00:00 left: ?, ? iters/sec]                                                           audio done !Rendering video TEMP_MPY_to_videofile.mp4
-|----------| 0/150   0% [elapsed: 00:00 left: ?, ? iters/sec]|#---------| 18/150  12% [elapsed: 00:00 left: 00:03, 35.79 iters/sec]|##--------| 33/150  22% [elapsed: 00:01 left: 00:03, 32.75 iters/sec]|###-------| 45/150  30% [elapsed: 00:01 left: 00:03, 29.82 iters/sec]|####------| 60/150  40% [elapsed: 00:02 left: 00:03, 29.44 iters/sec]|####------| 72/150  48% [elapsed: 00:02 left: 00:02, 28.24 iters/sec]
+|----------| 0/150   0% [elapsed: 00:00 left: ?, ? iters/sec]|#---------| 18/150  12% [elapsed: 00:00 left: 00:03, 35.79 iters/sec]|##--------| 33/150  22% [elapsed: 00:01 left: 00:03, 32.75 iters/sec]|###-------| 45/150  30% [elapsed: 00:01 left: 00:03, 29.82 iters/sec]|####------| 60/150  40% [elapsed: 00:02 left: 00:03, 29.44 iters/sec]|####------| 72/150  48% [elapsed: 00:02 left: 00:02, 28.24 iters/sec]|#####-----| 89/150  59% [elapsed: 00:03 left: 00:02, 29.08 iters/sec]|######----| 101/150  67% [elapsed: 00:03 left: 00:01, 28.32 iters/sec]|#######---| 115/150  76% [elapsed: 00:04 left: 00:01, 28.27 iters/sec]|########--| 130/150  86% [elapsed: 00:04 left: 00:00, 28.41 iters/sec]|#########-| 146/150  97% [elapsed: 00:05 left: 00:00, 28.61 iters/sec]                                                                       video done !
+Now merging video and audio...
+
+Running:
+>>> ffmpeg -y -i TEMP_MPY_to_videofile_SOUND.mp3 -i TEMP_MPY_to_videofile.mp4 -vcodec copy -acodec copy solution.mp4
+... ffmpeg command successful.
+
+Your video is ready ! Fingers crossed for the Oscars !]0;[?1000l[?12l[?25h[39;49m[66d[K[66;1H[?1049l[?1l>
