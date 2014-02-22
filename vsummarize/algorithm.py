@@ -136,7 +136,7 @@ def expand_hotspots(hotspots, video_duration, max_subclips=10):
         pass # TODO
     return expanded_spots
 
-def summarize(timestamps, video_duration):
+def get_clips(timestamps, video_duration):
     """
     Inputs a list of comment timestamps along with total
     video length.

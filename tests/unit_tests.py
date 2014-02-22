@@ -94,7 +94,7 @@ class GeneralUnitTestCases(unittest.TestCase):
 
     @print_test
     def video_summarize_test(self):
-        hotclips = algorithm.summarize(self.TIMESTAMPS, self.DURATION)
+        hotclips = algorithm.get_clips(self.TIMESTAMPS, self.DURATION)
         #print hotclips
         assert hotclips == self.HOTCLIPS
 

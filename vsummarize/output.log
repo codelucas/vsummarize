@@ -1,0 +1,12 @@
+]0;caca for ncurses[?1049h[1;66r(B[m[4l[?7h[?1h=[?25l[?1000h[39;49m[39;49m[37m[40m[H[2J[youtube] Setting language
+[youtube] zRCsZ5a3aCM: Downloading webpage
+[youtube] zRCsZ5a3aCM: Downloading video info webpage
+[youtube] zRCsZ5a3aCM: Extracting video information
+[youtube] zRCsZ5a3aCM: Encrypted signatures detected.
+[youtube] zRCsZ5a3aCM: Downloading js player vflrGwWV9
+[download] zRCsZ5a3aCM.mp4 has already been downloaded
+CLIPS: [(41, 47)]
+Making file solution.mp4 ...
+Rendering audio TEMP_MPY_to_videofile_SOUND.mp3
+|----------| 0/7   0% [elapsed: 00:00 left: ?, ? iters/sec]                                                           audio done !Rendering video TEMP_MPY_to_videofile.mp4
+|----------| 0/150   0% [elapsed: 00:00 left: ?, ? iters/sec]|#---------| 18/150  12% [elapsed: 00:00 left: 00:03, 35.79 iters/sec]|##--------| 33/150  22% [elapsed: 00:01 left: 00:03, 32.75 iters/sec]|###-------| 45/150  30% [elapsed: 00:01 left: 00:03, 29.82 iters/sec]|####------| 60/150  40% [elapsed: 00:02 left: 00:03, 29.44 iters/sec]|####------| 72/150  48% [elapsed: 00:02 left: 00:02, 28.24 iters/sec]
