@@ -4,7 +4,7 @@ import sys
 import os
 from moviepy.editor import *
 
-def summarize(filepath, hotclips):
+def summarize(filepath, new_filename, hotclips):
     """
     Inputs a filepath for a video and generates a new shorter video
     in that same filepath.
@@ -22,7 +22,7 @@ def summarize(filepath, hotclips):
     # txt_clip = txt_clip.set_pos('bottom').set_duration(20)
     # final_clip = CompositeVideoClip([clip, txt_clip])
     try:
-        final_clip.to_videofile("solution.mp4", fps=25, audio_codec='mp3', codec='mpeg4')
+        final_clip.to_videofile(new_filename, fps=25, audio_codec='mp3', codec='mpeg4')
     except Exception, e:
         print 'ERROR when generating output video', str(e)
 

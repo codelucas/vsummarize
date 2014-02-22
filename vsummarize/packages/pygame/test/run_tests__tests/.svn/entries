@@ -1,126 +1,0 @@
-10
-
-dir
-3227
-svn://seul.org/svn/pygame/trunk/test/run_tests__tests
-svn://seul.org/svn/pygame
-
-
-
-2010-08-18T21:05:22.854575Z
-2861
-lenard
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6368f583-b015-0410-a43b-8a248398de60
-
-everything
-dir
-
-incomplete_todo
-dir
-
-timeout
-dir
-
-__init__.py
-file
-
-
-
-
-2014-01-31T22:05:53.072793Z
-d5b0eaf0ea4aa52b0dab64b782f42a29
-2010-08-18T21:05:22.854575Z
-2861
-lenard
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-8
-
-exclude
-dir
-
-failures1
-dir
-
-run_tests__test.py
-file
-
-
-
-
-2014-01-31T22:05:53.076793Z
-eecde426c97c650b0bacdaaf4dd2233a
-2010-08-18T21:05:22.854575Z
-2861
-lenard
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4421
-
-infinite_loop
-dir
-
-print_stdout
-dir
-
-incomplete
-dir
-
-print_stderr
-dir
-
-all_ok
-dir
-

@@ -14,8 +14,8 @@ import algorithm
 
 parent_dir = os.path.dirname(os.path.abspath(__file__))
 
-def rechunk_video(filename, clips):
-    video.summarize(filename, clips)
+def rechunk_video(filename, new_filename, clips):
+    video.summarize(filename, new_filename, clips)
 
 def download_video(url):
     """
@@ -52,4 +52,4 @@ if __name__ == '__main__':
 
     youtube_id = download_video(url)
     clips = get_subclips(youtube_id)
-    rechunk_video(youtube_id+".mp4", clips)
+    rechunk_video(youtube_id+".mp4", "summarized-"+youtube_id+".mp4", clips)
