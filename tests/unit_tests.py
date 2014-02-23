@@ -102,8 +102,8 @@ class GeneralUnitTestCases(unittest.TestCase):
 
     @print_test
     def video_api_summarize_test(self):
-        data = vsummarize.summarize('http://www.youtube.com/watch?v=2aqpF-MwyUs',
-                output='finished.mp4')
+        data = vsummarize.summarize('http://www.youtube.com/watch?v=hed1nP9X7pI',
+                output='obama.avi')
 
         print 'hot clips', data.hot_clips
         print 'timestamps', data.timestamps

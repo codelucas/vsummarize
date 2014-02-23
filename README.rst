@@ -32,6 +32,15 @@ algorithm generates summaries via the comments and their timestamps.
     >>> print data.duration # in seconds
     65 
 
+A demo:
+-------
+
+I tested this software on a 1 hour long Obama speech.
+
+Original video (59 minutes): http://www.youtube.com/watch?v=hed1nP9X7pI
+
+Summarized video (3:30 minutes): http://www.youtube.com/watch?v=aDYDN9lsSHg
+
 A lot of the time, (even in my product www.shorten.tv), 
 you just want a list of hot video clips instead of physically summarizing
 a video into a new ``.mp4`` because of the resource consumption.
@@ -64,27 +73,47 @@ Features
 Get it now
 ----------
 
-Because of the various video manipulation libraries we use, installing
-vsummarize is a multi-step process. First, be sure you have 
-`pip <http://www.pip-installer.org/>`_.
+Because I use both OSX and Ubuntu, I have clear instructions on setting
+up this project in both platforms. However, I can't guarantee
+anything for the other platforms besides give installation advice.
 
-::
+We use ``moviepy``, the python video manipulation library, which in turn depends 
+on the ``ffmpeg`` and ``pygame`` libraries.
 
-    $ pip install vsummarize
+Be sure you have `pip <http://www.pip-installer.org/>`_.
 
-    Now we need our video manipulation binaries.
+The installation instructions are as follow:
 
-    $ sudo apt-get install python-pygame
-    $ sudo apt-get install libsdl1.2-dev
-    $ sudo apt-get install libsmpeg-dev
-    $ sudo apt-get install imagemagick
-    
-    $ cd packages/pygame
-    $ python2.7 setup.py build
-    $ sudo python2.7 setup.py install
-    
-    $ wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
+**OSX**:
 
+```bash
+
+brew install mercurial
+brew install sdl sdl_image sdl_mixer sdl_ttf smpeg portmidi 
+sudo pip install hg+http://bitbucket.org/pygame/pygame
+
+brew install ffmpeg
+
+pip install vsummarize
+
+```
+
+**Ubuntu**:
+
+```bash
+$ sudo apt-get install python-pygame
+$ sudo apt-get install libsdl1.2-dev
+$ sudo apt-get install libsmpeg-dev
+
+$ wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
+
+$ cd packages/pygame
+$ python2.7 setup.py build
+$ sudo python2.7 setup.py install
+
+$ pip install vsummarize
+
+```
 
 Warning
 -------

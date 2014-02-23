@@ -18,66 +18,6 @@ except ImportError:
     from distutils.core import setup
     setuptools_available = False
 
-"""
-try:
-    # This will create an exe that needs Microsoft Visual C++ 2008
-    # Redistributable Package
-    import py2exe
-except ImportError:
-    if len(sys.argv) >= 2 and sys.argv[1] == 'py2exe':
-        print("Cannot import py2exe", file=sys.stderr)
-        exit(1)
-
-py2exe_options = {
-    "bundle_files": 1,
-    "compressed": 1,
-    "optimize": 2,
-    "dist_dir": '.',
-    "dll_excludes": ['w9xpopen.exe'],
-}
-
-py2exe_console = [{
-    "script": "./vsummarize/__main__.py",
-    "dest_base": "vsummarize",
-}]
-
-py2exe_params = {
-    'console': py2exe_console,
-    'options': {"py2exe": py2exe_options},
-    'zipfile': None
-}
-
-if len(sys.argv) >= 2 and sys.argv[1] == 'py2exe':
-    params = py2exe_params
-else:
-    #files_spec = [
-    #    ('etc/bash_completion.d', ['vsummarize.bash-completion']),
-    #    ('share/doc/vsummarize', ['README.txt']),
-    #    ('share/man/man1', ['vsummarize.1'])
-    #]
-
-    root = os.path.dirname(os.path.abspath(__file__))
-    data_files = []
-
-    #for dirname, files in files_spec:
-    #    resfiles = []
-    #    for fn in files:
-    #        if not os.path.exists(fn):
-    #            warnings.warn('Skipping file %s since it is not present.
-    #                Type  make  to build all automatically generated files.' % fn)
-    #        else:
-    #            resfiles.append(fn)
-    #    data_files.append((dirname, resfiles))
-
-    params = {
-        'data_files': data_files,
-    }
-    if setuptools_available:
-        params['entry_points'] = {'console_scripts': ['vsummarize = vsummarize:main']}
-    else:
-        params['scripts'] = ['bin/vsummarize']
-"""
-
 # Get the version from youtube_dl/version.py without importing the package
 exec(compile(open('vsummarize/version.py').read(),
              'vsummarize/version.py', 'exec'))
@@ -105,16 +45,3 @@ setup(
     zip_safe=False
     # **params
 )
-"""
-sudo apt-get install python-pygame
-sudo apt-get install libsdl1.2-dev
-sudo apt-get install libsmpeg-dev
-sudo apt-get install imagemagick
-
-# unzip the provided pygame file
-cd packages/pygame
-python setup.py build
-python setup.py install
-
-wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
-"""
