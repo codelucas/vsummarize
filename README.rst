@@ -107,7 +107,7 @@ License
 
 Authored and maintained by `Lucas Ou-Yang`_.
 
-We use `moviepy` and `ffmpeg` for video manipulation.
+We use `moviepy`_ and `ffmpeg`_ for video manipulation.
 We also use google's youtube api.
 
 Please feel free to `email & contact me`_ if you run into issues or just would like
