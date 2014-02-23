@@ -1,7 +1,8 @@
 Pythonic Video summarization
 ----------------------------
 
-Enough of nlp text summarization algorithms.. Presenting: **video summarization**!
+Sick of nlp text summarization? Presenting: **video summarization**!
+
 We take advantage of youtube's comment timestamp video references to generate
 a summarized + shorter video from any youtube video.
 
@@ -12,13 +13,13 @@ A glance:
 
     >>> import vsummarize
 
-    >>> meta_data = vsummarize.summarize('http://youtube.com/watch?v=...', 'summarized.mp4')
+    >>> data = vsummarize.summarize('http://youtube.com/watch?v=...', output='shorter.mp4')
 
-After this command, the physical summarized mp4 is now in whatever
-path you saved it into. We return some meta_data incase you need it.
+After this command, the physical summarized mp4 is now in the output path 
+you provided. We return some meta data incase you need it.
 
-Timestamps from youtube comments, important b/c our algorithm generates 
-summaries via the comments
+Timestamps from youtube comments are included and are important b/c our 
+algorithm generates summaries via the comments and their timestamps.
 
 .. code-block:: pycon
 
@@ -31,15 +32,11 @@ summaries via the comments
     >>> print meta_data.video_duration # in seconds
     65 
 
-Sometimes, actually a lot of the time, (even in my product www.shorten.tv), 
+A lot of the time, (even in my product www.shorten.tv), 
 you just want a list of hot video clips instead of physically summarizing
 a video into a new `.mp4` because of the resource consumption.
 
 To do this, simply ignore the output video file parameter.
-
-The physical, summarized .mp4 has NOT been generated. We just
-retrieve a set of meta data of what would have happened if we did
-summaraize it.
 
 .. code-block:: pycon
 
@@ -47,6 +44,11 @@ summaraize it.
 
     >>> print meta_data.hot_clips
     [('0:12', '0:16'), ..., ('12:31', '13:01')]
+
+
+The physical, summarized .mp4 has NOT been generated. We just
+retrieve a set of meta data of what would have happened if we did
+summaraize it.
 
 To actually generate a summary, we use ffmpeg + moviepy
 along with the above hot_clip timestamps to stitch together the video.
@@ -94,7 +96,7 @@ License
 
 Authored and maintained by `Lucas Ou-Yang`_.
 
-vsummarize uses `moviepy` and `ffmpeg` for video manipulation.
+We use `moviepy` and `ffmpeg` for video manipulation.
 We also use google's youtube api.
 
 Please feel free to `email & contact me`_ if you run into issues or just would like
