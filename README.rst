@@ -15,7 +15,7 @@ A glance:
 
     >>> data = vsummarize.summarize('http://youtube.com/watch?v=...', output='shorter.mp4')
 
-After this command, the physical summarized mp4 is now in the output path 
+After this command, the physical summarized ``.mp4`` is now in the output path 
 you provided. We return some meta data incase you need it.
 
 Timestamps from youtube comments are included and are important b/c our 
@@ -23,40 +23,35 @@ algorithm generates summaries via the comments and their timestamps.
 
 .. code-block:: pycon
 
-    >>> print meta_data.summary_clips
+    >>> print data.clips
     [('0:12', '0:16'), ..., ('12:31', '13:01')]
 
-    >>> print meta_data.comment_timestamps 
+    >>> print data.timestamps 
     ['0:12', '0:12', '0:14', ..., '12:31']
 
-    >>> print meta_data.video_duration # in seconds
+    >>> print data.duration # in seconds
     65 
 
 A lot of the time, (even in my product www.shorten.tv), 
 you just want a list of hot video clips instead of physically summarizing
-a video into a new `.mp4` because of the resource consumption.
+a video into a new ``.mp4`` because of the resource consumption.
 
 To do this, simply ignore the output video file parameter.
 
 .. code-block:: pycon
 
-    >>> meta_data = vsummarize.summarize('http://youtube.com/watch?v=...')
+    >>> data = vsummarize.summarize('http://youtube.com/watch?v=...')
 
-    >>> print meta_data.hot_clips
+    >>> print data.clips
     [('0:12', '0:16'), ..., ('12:31', '13:01')]
 
 
-The physical, summarized .mp4 has NOT been generated. We just
-retrieve a set of meta data of what would have happened if we did
-summaraize it.
+The physical, summarized ``.mp4`` has NOT been generated. We just
+retrieved a set of meta data of what would have happened if we did
+summarize it.
 
-To actually generate a summary, we use ffmpeg + moviepy
-along with the above hot_clip timestamps to stitch together the video.
-
-Documentation
--------------
-
-Comming soon!
+To actually generate a summary, we use **ffmpeg + moviepy**
+along with the above ``.clip`` video sequences to stitch together the video.
 
 Features
 --------
