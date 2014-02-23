@@ -1,7 +1,7 @@
 Pythonic Video summarization
 ----------------------------
 
-Enough of nlp text summarization algorithms.. We present to you: **video summarization**!
+Enough of nlp text summarization algorithms.. Presenting: **video summarization**!
 We take advantage of youtube's comment timestamp video references to generate
 a summarized + shorter video from any youtube video.
 
@@ -13,34 +13,43 @@ A glance:
     >>> import vsummarize
 
     >>> meta_data = vsummarize.summarize('http://youtube.com/watch?v=...', 'summarized.mp4')
-    After this command, the physical summarized mp4 is now in whatever
-    path you saved it into. We return some meta_data incase you need it.
+
+After this command, the physical summarized mp4 is now in whatever
+path you saved it into. We return some meta_data incase you need it.
+
+Timestamps from youtube comments, important b/c our algorithm generates 
+summaries via the comments
+
+.. code-block:: pycon
 
     >>> print meta_data.summary_clips
     [('0:12', '0:16'), ..., ('12:31', '13:01')]
 
-    >>> print meta_data.comment_timestamps # from youtube comments
+    >>> print meta_data.comment_timestamps 
     ['0:12', '0:12', '0:14', ..., '12:31']
 
     >>> print meta_data.video_duration # in seconds
     65 
 
-    Sometimes, actually a lot of the times (even in my product www.shorten.tv), 
-    you just want a list of hot video clips instead of physically summarizing
-    a video into a new `.mp4` because of the resource consumption.
+Sometimes, actually a lot of the time, (even in my product www.shorten.tv), 
+you just want a list of hot video clips instead of physically summarizing
+a video into a new `.mp4` because of the resource consumption.
 
-    To do this, simply ignore the output video file parameter.
+To do this, simply ignore the output video file parameter.
+
+The physical, summarized .mp4 has NOT been generated. We just
+retrieve a set of meta data of what would have happened if we did
+summaraize it.
+
+.. code-block:: pycon
 
     >>> meta_data = vsummarize.summarize('http://youtube.com/watch?v=...')
-    The physical, summarized .mp4 has NOT been generated. We just
-    retrieve a set of meta data of what would have happened if we did
-    summaraize it.
 
     >>> print meta_data.hot_clips
     [('0:12', '0:16'), ..., ('12:31', '13:01')]
 
-    To actually generate a summary, we simply use ffmpeg+moviepy
-    along with the above hot_clip timestamps to stitch together the video.
+To actually generate a summary, we use ffmpeg + moviepy
+along with the above hot_clip timestamps to stitch together the video.
 
 Documentation
 -------------
