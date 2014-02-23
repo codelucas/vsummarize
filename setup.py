@@ -1,25 +1,122 @@
-
+#!/bin/python2.7
+# -*- coding: utf-8 -*-
 """
+Lucas Ou-Yang 2014 -- http://codelucas.com
 
+Setup guide: http://guide.python-distribute.org/creation.html
+python setup.py sdist bdist_wininst upload
+"""
+from __future__ import print_function
 
-Requirements:
-    pip install decorator
-    pip install numpy
-    pip install moviepy
-    pip install gdata
+import os.path
+import pkg_resources
+import warnings
+import sys
+try:
+    from setuptools import setup
+    setuptools_available = True
+except ImportError:
+    from distutils.core import setup
+    setuptools_available = False
 
-    sudo apt-get install python-pygame
-    sudo apt-get install libsdl1.2-dev
-    sudo apt-get install libsmpeg-dev
-    sudo apt-get install imagemagick
+try:
+    # This will create an exe that needs Microsoft Visual C++ 2008
+    # Redistributable Package
+    import py2exe
+except ImportError:
+    if len(sys.argv) >= 2 and sys.argv[1] == 'py2exe':
+        print("Cannot import py2exe", file=sys.stderr)
+        exit(1)
 
-    cd packages/pygame
-    python2.7 setup.py build
-    sudo python2.7 setup.py install
+py2exe_options = {
+    "bundle_files": 1,
+    "compressed": 1,
+    "optimize": 2,
+    "dist_dir": '.',
+    "dll_excludes": ['w9xpopen.exe'],
+}
 
-    if you_use_ubuntu:
-        wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
+py2exe_console = [{
+    "script": "./vsummarize/__main__.py",
+    "dest_base": "vsummarize",
+}]
+
+py2exe_params = {
+    'console': py2exe_console,
+    'options': {"py2exe": py2exe_options},
+    'zipfile': None
+}
+
+if len(sys.argv) >= 2 and sys.argv[1] == 'py2exe':
+    params = py2exe_params
+else:
+    #files_spec = [
+    #    ('etc/bash_completion.d', ['vsummarize.bash-completion']),
+    #    ('share/doc/vsummarize', ['README.txt']),
+    #    ('share/man/man1', ['vsummarize.1'])
+    #]
+
+    root = os.path.dirname(os.path.abspath(__file__))
+    data_files = []
+
+    #for dirname, files in files_spec:
+    #    resfiles = []
+    #    for fn in files:
+    #        if not os.path.exists(fn):
+    #            warnings.warn('Skipping file %s since it is not present.
+    #                Type  make  to build all automatically generated files.' % fn)
+    #        else:
+    #            resfiles.append(fn)
+    #    data_files.append((dirname, resfiles))
+
+    params = {
+        'data_files': data_files,
+    }
+    if setuptools_available:
+        params['entry_points'] = {'console_scripts': ['vsummarize = vsummarize:main']}
     else:
-        sudo apt-get install libav-tools
+        params['scripts'] = ['bin/vsummarize']
 
+# Get the version from youtube_dl/version.py without importing the package
+exec(compile(open('vsummarize/version.py').read(),
+             'vsummarize/version.py', 'exec'))
+
+requires = [
+    'argparse',
+    'decorator',
+    'gdata',
+    'moviepy',
+    'numpy',
+    'youtube-dl'
+]
+
+setup(
+    name='vsummarize',
+    version=__version__,
+    description='Python video summarization.',
+    long_description='',
+    author='Lucas Ou-Yang',
+    author_email='lucasyangpersonal@gmail.com',
+    url='https://github.com/codelucas/vsummarize',
+    packages=['vsummarize'],
+    include_package_data=True,
+    install_requires=requires,
+    license="",
+    zip_safe=False,
+    **params
+)
+"""
+sudo apt-get install python-pygame
+sudo apt-get install libsdl1.2-dev
+sudo apt-get install libsmpeg-dev
+sudo apt-get install imagemagick
+
+cd packages/pygame
+python2.7 setup.py build
+sudo python2.7 setup.py install
+
+if you_use_ubuntu:
+    wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
+else:
+    sudo apt-get install libav-tools
 """
