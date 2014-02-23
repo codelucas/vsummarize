@@ -105,4 +105,16 @@ setup(
     zip_safe=False
     # **params
 )
+"""
+sudo apt-get install python-pygame
+sudo apt-get install libsdl1.2-dev
+sudo apt-get install libsmpeg-dev
+sudo apt-get install imagemagick
 
+# unzip the provided pygame file
+cd packages/pygame
+python setup.py build
+python setup.py install
+
+wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
+"""
