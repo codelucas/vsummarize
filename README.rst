@@ -23,7 +23,7 @@ algorithm generates summaries via the comments and their timestamps.
 
 .. code-block:: pycon
 
-    >>> print data.clips
+    >>> print data.hot_clips
     [('0:12', '0:16'), ..., ('12:31', '13:01')]
 
     >>> print data.timestamps 
@@ -42,7 +42,7 @@ To do this, simply ignore the output video file parameter.
 
     >>> data = vsummarize.summarize('http://youtube.com/watch?v=...')
 
-    >>> print data.clips
+    >>> print data.hot_clips
     [('0:12', '0:16'), ..., ('12:31', '13:01')]
 
 
@@ -51,7 +51,7 @@ retrieved a set of meta data of what would have happened if we did
 summarize it.
 
 To actually generate a summary, we use **ffmpeg + moviepy**
-along with the above ``.clip`` video sequences to stitch together the video.
+along with the above ``.hot_clips`` video sequences to stitch together the video.
 
 Features
 --------

@@ -6,7 +6,6 @@ __license__ = 'MIT'
 __copyright__ = 'Copyright 2014, Lucas Ou-Yang'
 
 import time
-# from moviepy.editor import *
 
 def convert_to_timestamp(seconds):
     """

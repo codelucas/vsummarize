@@ -6,8 +6,9 @@ __license__ = 'MIT'
 __copyright__ = 'Copyright 2014, Lucas Ou-Yang'
 
 import re
-from settings import google_username, google_password
 from gdata.youtube import service
+
+from .settings import google_username, google_password
 
 def comments_generator(client, video_id):
     """

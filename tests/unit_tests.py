@@ -17,11 +17,12 @@ import codecs
 TEST_DIR = os.path.abspath(os.path.dirname(__file__))
 PARENT_DIR = os.path.join(TEST_DIR, '..')
 
-# tests is a separate module, insert parent dir manually
+# Tests is a separate module, insert parent dir manually
 sys.path.insert(0, PARENT_DIR)
 
 import vsummarize
-from vsummarize import algorithm, youtube
+from vsummarize import algorithm
+from vsummarize import youtube
 
 def print_test(method):
     """
@@ -51,6 +52,7 @@ class GeneralUnitTestCases(unittest.TestCase):
         self.get_hotspot_test()
         self.expand_hotspot_test()
         self.video_summarize_test()
+        self.video_api_summarize_test()
 
     @print_test
     def conversion_test(self):
@@ -58,8 +60,8 @@ class GeneralUnitTestCases(unittest.TestCase):
 
     @print_test
     def get_timestamps_test(self):
-        #timestamps = youtube.get_timestamp_list(self.client, self.video_id)
-        #print timestamps
+        # timestamps = youtube.get_timestamp_list(self.client, self.video_id)
+        # print timestamps
         duration_seconds = youtube.get_duration(self.client, self.video_id)
         assert self.DURATION == duration_seconds
 
@@ -95,13 +97,18 @@ class GeneralUnitTestCases(unittest.TestCase):
     @print_test
     def video_summarize_test(self):
         hotclips = algorithm.get_clips(self.TIMESTAMPS, self.DURATION)
-        #print hotclips
+        # print hotclips
         assert hotclips == self.HOTCLIPS
+
+    @print_test
+    def video_api_summarize_test(self):
+        data = vsummarize.summarize('http://www.youtube.com/watch?v=GRH7stOrezg', output='finished.mp4')
+        print 'hot clips', data.hot_clips
+        print 'timestamps', data.timestamps
+        print 'duration', data.duration
 
 if __name__ == '__main__':
     # unittest.main() # run all units and their cases
-
     suite = unittest.TestSuite()
     suite.addTest(GeneralUnitTestCases())
-
     unittest.TextTestRunner().run(suite)

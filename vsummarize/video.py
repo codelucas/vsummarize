@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
+
 from moviepy.editor import *
 
 def summarize(filepath, new_filename, hotclips):
