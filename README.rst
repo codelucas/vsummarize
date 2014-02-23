@@ -86,34 +86,33 @@ The installation instructions are as follow:
 
 **OSX**:
 
-```bash
+::
 
-brew install mercurial
-brew install sdl sdl_image sdl_mixer sdl_ttf smpeg portmidi 
-sudo pip install hg+http://bitbucket.org/pygame/pygame
+    $ brew install mercurial
+    $ brew install sdl sdl_image sdl_mixer sdl_ttf smpeg portmidi 
+    $ sudo pip install hg+http://bitbucket.org/pygame/pygame
 
-brew install ffmpeg
+    $ brew install ffmpeg
 
-pip install vsummarize
+    $ pip install vsummarize
 
-```
 
 **Ubuntu**:
 
-```bash
-$ sudo apt-get install python-pygame
-$ sudo apt-get install libsdl1.2-dev
-$ sudo apt-get install libsmpeg-dev
+::
 
-$ wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
+    $ sudo apt-get install python-pygame
+    $ sudo apt-get install libsdl1.2-dev
+    $ sudo apt-get install libsmpeg-dev
 
-$ cd packages/pygame
-$ python2.7 setup.py build
-$ sudo python2.7 setup.py install
+    $ wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
 
-$ pip install vsummarize
+    $ cd packages/pygame
+    $ python2.7 setup.py build
+    $ sudo python2.7 setup.py install
 
-```
+    $ pip install vsummarize
+
 
 Warning
 -------
