@@ -35,7 +35,9 @@ def summarize(filepath, new_filename, hotclips):
     final_clip.to_videofile(new_filename,
                             fps= video.fps,
                             audio_codec='mp3')
-# EXAMPLE (WORKS)
-summarize("TbQm5doF_Uc.mp4",
-          "timberlake.mp4",
-          hotclips = [(1,5), (15,20), (35,40)])
+
+if __name__ == '__main__':
+    # EXAMPLE (WORKS)
+    summarize("TbQm5doF_Uc.mp4",
+              "timberlake.mp4",
+              hotclips = [(1,5), (15,20), (35,40)])
