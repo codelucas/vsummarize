@@ -102,10 +102,16 @@ class GeneralUnitTestCases(unittest.TestCase):
 
     @print_test
     def video_api_summarize_test(self):
-        data = vsummarize.summarize('http://www.youtube.com/watch?v=GRH7stOrezg', output='finished.mp4')
+        data = vsummarize.summarize('http://www.youtube.com/watch?v=2aqpF-MwyUs',
+                output='finished.mp4')
+
         print 'hot clips', data.hot_clips
         print 'timestamps', data.timestamps
         print 'duration', data.duration
+
+        assert len(data.hot_clips) != 0
+        assert len(data.timestamps) != 0
+        assert data.duration is not None
 
 if __name__ == '__main__':
     # unittest.main() # run all units and their cases

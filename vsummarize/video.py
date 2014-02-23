@@ -14,8 +14,19 @@ def summarize(filepath, new_filename, hotclips):
     for start, end in hotclips:
         try:
             chunked_clip = VideoFileClip(filepath).subclip(start, end)
+            """
+            # This was for testing, leave for now.
+            one = VideoFileClip('YkADj0TPrJA.mp4').subclip(10, 15)
+            two = VideoFileClip('YkADj0TPrJA.mp4').subclip(17, 20)
+            three = VideoFileClip('YkADj0TPrJA.mp4').subclip(24, 27)
+            four = VideoFileClip('YkADj0TPrJA.mp4').subclip(28, 30)
+            five = VideoFileClip('YkADj0TPrJA.mp4').subclip(31, 35)
+            f=concatenate([one, two, three, four, five])
+            f.to_videofile('finished.mp4', fps=25, audio_codec='mp3', codec='mpeg4')
+            """
         except Exception, e:
             print 'ERROR when chunking video', str(e)
+            continue
         clips.append(chunked_clip)
 
     final_clip = concatenate(clips)
@@ -27,5 +38,8 @@ def summarize(filepath, new_filename, hotclips):
     except Exception, e:
         print 'ERROR when generating output video', str(e)
 
+    os.remove(filepath) # remove the full youtube .mp4, only keep the summary
+
 if __name__ == '__main__':
-    summarize('zRCsZ5a3aCM.mp4', [(0,5), (10,15)])
+    summarize('YkADj0TPrJA.mp4', 'finished.mp4',
+        [(10, 15), (17, 20), (24, 27), (28, 30), (31, 35)])

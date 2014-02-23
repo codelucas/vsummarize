@@ -86,6 +86,22 @@ vsummarize is a multi-step process. First, be sure you have
     $ wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
 
 
+Warning
+-------
+
+Because this is such a resource intensive task & lib (especially if you are
+actually using the summarized ``.mp4`` generation feature), you may notice on a few
+videos the ``.mp4`` generation fail due to an *OS memory exception*. This means
+that you don't have the RAM for ``ffmpeg`` to fork processes to subchunk out your video.
+
+I don't know any solution to this besides hoping for impovements in the moviepy or 
+ffmpeg libraries (or just get more RAM).
+
+Also, ``moviepy`` functions manipulate your terminal console environment.. it's a bit funky.
+You will know what i'm talking about when you see it. One way around this is to
+pipe your entire command into some file so moveipy's weird console never appears (it's
+getting piped into your file).
+
 License
 -------
 

@@ -8,7 +8,11 @@ __copyright__ = 'Copyright 2014, Lucas Ou-Yang'
 import re
 from gdata.youtube import service
 
-from .settings import google_username, google_password
+try:
+    from .settings import google_username, google_password
+except Exception, e:
+    print 'Fails when not using as a module', str(e)
+    from settings import google_username, google_password
 
 def comments_generator(client, video_id):
     """

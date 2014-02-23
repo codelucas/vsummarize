@@ -50,7 +50,6 @@ def get_subclips(youtube_id, meta_data):
     meta_data.hot_clips = clips
     meta_data.duration = duration_seconds
 
-    print 'CLIPS:', clips
     return clips
 
 def summarize(youtube_url, output=None):
@@ -77,6 +76,7 @@ class VideoMetadata(object):
         self.timestamps = []
         self.duration = None
 
+
 if __name__ == '__main__':
     # parser = argparse.ArgumentParser(description='download and summarize youtube videos')
     # parser.add_argument('-f', '--filename', type=str, default='', help='Enter a filename')
@@ -84,6 +84,4 @@ if __name__ == '__main__':
     # args = parser.parse_args()
     # filename = args.filename
     # url = args.url
-    summarize('http://www.youtube.com/watch?v=YkADj0TPrJA&list=PLVF4WuiCdVVNwUqzh1AutbJVzF9n8kx2C',
-            'finished.mp4')
-
+    summarize('http://www.youtube.com/watch?v=YkADj0TPrJA', 'finished.mp4')
