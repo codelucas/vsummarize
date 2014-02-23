@@ -9,7 +9,6 @@ python setup.py sdist bdist_wininst upload
 from __future__ import print_function
 
 import os.path
-import pkg_resources
 import warnings
 import sys
 try:
@@ -19,6 +18,7 @@ except ImportError:
     from distutils.core import setup
     setuptools_available = False
 
+"""
 try:
     # This will create an exe that needs Microsoft Visual C++ 2008
     # Redistributable Package
@@ -76,11 +76,11 @@ else:
         params['entry_points'] = {'console_scripts': ['vsummarize = vsummarize:main']}
     else:
         params['scripts'] = ['bin/vsummarize']
+"""
 
 # Get the version from youtube_dl/version.py without importing the package
 exec(compile(open('vsummarize/version.py').read(),
              'vsummarize/version.py', 'exec'))
-
 requires = [
     'argparse',
     'decorator',
@@ -102,21 +102,7 @@ setup(
     include_package_data=True,
     install_requires=requires,
     license="",
-    zip_safe=False,
-    **params
+    zip_safe=False
+    # **params
 )
-"""
-sudo apt-get install python-pygame
-sudo apt-get install libsdl1.2-dev
-sudo apt-get install libsmpeg-dev
-sudo apt-get install imagemagick
 
-cd packages/pygame
-python2.7 setup.py build
-sudo python2.7 setup.py install
-
-if you_use_ubuntu:
-    wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
-else:
-    sudo apt-get install libav-tools
-"""
