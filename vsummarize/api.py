@@ -84,4 +84,4 @@ if __name__ == '__main__':
     # args = parser.parse_args()
     # filename = args.filename
     # url = args.url
-    summarize('http://www.youtube.com/watch?v=YkADj0TPrJA', 'finished.mp4')
+    summarize('http://www.youtube.com/watch?v=YkADj0TPrJA', 'finished_from_api.mp4')

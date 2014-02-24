@@ -6,9 +6,6 @@ Lucas Ou-Yang 2014 -- http://codelucas.com
 Setup guide: http://guide.python-distribute.org/creation.html
 python setup.py sdist bdist_wininst upload
 """
-from __future__ import print_function
-
-import os.path
 import warnings
 import sys
 try:
@@ -22,7 +19,6 @@ except ImportError:
 exec(compile(open('vsummarize/version.py').read(),
              'vsummarize/version.py', 'exec'))
 requires = [
-    'argparse',
     'decorator',
     'gdata',
     'moviepy',

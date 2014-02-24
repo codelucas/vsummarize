@@ -82,7 +82,7 @@ on the ``ffmpeg`` and ``pygame`` libraries.
 
 Be sure you have `pip <http://www.pip-installer.org/>`_.
 
-The installation instructions are as follow:
+The installation instructions are as follows:
 
 **OSX**:
 
@@ -91,9 +91,7 @@ The installation instructions are as follow:
     $ brew install mercurial
     $ brew install sdl sdl_image sdl_mixer sdl_ttf smpeg portmidi 
     $ sudo pip install hg+http://bitbucket.org/pygame/pygame
-
     $ brew install ffmpeg
-
     $ pip install vsummarize
 
 
@@ -114,6 +112,13 @@ The installation instructions are as follow:
     $ pip install vsummarize
 
 
+**This app uses the google gdata api**. I have a file named ``settings.py`` which contains
+my personal api keys. I've removed that file from this repo for obvious
+reasons but i've included a file called ``rename_to_settings.py`` which has two api key
+values for you to cleanly fill out. Also, please rename that file to ``settings.py`` after
+you are finished!
+
+
 Warning
 -------
 
@@ -121,9 +126,6 @@ Because this is such a resource intensive task & lib (especially if you are
 actually using the summarized ``.mp4`` generation feature), you may notice on a few
 videos the ``.mp4`` generation fail due to an *OS memory exception*. This means
 that you don't have the RAM for ``ffmpeg`` to fork processes to subchunk out your video.
-
-I don't know any solution to this besides hoping for impovements in the moviepy or 
-ffmpeg libraries (or just get more RAM).
 
 Also, ``moviepy`` functions manipulate your terminal console environment.. it's a bit funky.
 You will know what i'm talking about when you see it. One way around this is to
@@ -135,6 +137,8 @@ License
 
 Authored and maintained by `Lucas Ou-Yang`_.
 
+Shoutout to `Zulko`_ for helping code some parts of this project.
+
 We use `moviepy`_ and `ffmpeg`_ for video manipulation.
 We also use google's youtube api.
 
@@ -145,3 +149,4 @@ to talk about the future of this library!
 .. _`email & contact me`: mailto:lucasyangpersonal@gmail.com
 .. _`moviepy`: https://github.com/Zulko/moviepy 
 .. _`ffmpeg`: http://www.ffmpeg.org/ 
+.. _`Zulko`: https://github.com/Zulko

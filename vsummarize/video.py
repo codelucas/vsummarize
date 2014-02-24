@@ -3,7 +3,6 @@
 import sys
 import os
 
-# from moviepy.editor import *
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.video.VideoClip import TextClip
 from moviepy.video.compositing.concatenate import concatenate
@@ -26,18 +25,16 @@ def summarize(filepath, new_filename, hotclips):
     #                      fontsize=20, color='white')
     #             .set_pos('bottom')
     #             .set_duration(5))
-
     # final_clip = CompositeVideoClip([summarized_video, txt_clip])
 
     # Use the to_videofile default codec, libx264
     # libx264 is much better than mpeg4, and still writes .mp4
     # Use the fps of the original video.
     final_clip.to_videofile(new_filename,
-                            fps= video.fps,
+                            fps=video.fps,
                             audio_codec='mp3')
 
 if __name__ == '__main__':
-    # EXAMPLE (WORKS)
     summarize("TbQm5doF_Uc.mp4",
-              "timberlake.mp4",
+              "finished_from_video.mp4",
               hotclips = [(1,5), (15,20), (35,40)])
