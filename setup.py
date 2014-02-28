@@ -18,7 +18,6 @@ exec(compile(open('vsummarize/version.py').read(),
              'vsummarize/version.py', 'exec'))
 
 requires = [
-    'decorator',
     'gdata',
     'moviepy',
     'numpy',

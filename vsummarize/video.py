@@ -33,6 +33,6 @@ def summarize(filepath, new_filename, hotclips):
                             audio_codec='mp3')
 
 if __name__ == '__main__':
-    summarize("TbQm5doF_Uc.mp4",
+    summarize("2PEG82Udb90.mp4",
               "finished_from_video.mp4",
               hotclips=[(1, 5), (15, 20), (35, 40)])

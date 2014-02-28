@@ -89,16 +89,19 @@ The installation instructions are as follows:
 ::
 
     $ brew install ffmpeg
-    $ pip install vsummarize
 
 
 **Ubuntu**:
 
 ::
 
-    $ wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
-    # open the above^ and install that
+    $ curl -O http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-02-28.tar.gz
+    $ tar -zxvf ffmpeg.static.64bit.2014-02-28.tar.gz 
+    $ sudo mv ffmpeg ffprobe /usr/local/bin/.
+    $ rm ffmpeg.static.64bit.2014-02-28.tar.gz 
 
+
+And lastly, don't forget to install ``vSummarize`` itself!
 
 ::
 
@@ -125,12 +128,11 @@ License
 -------
 
 Authored and maintained by `Lucas Ou-Yang`_.
-
-Shoutout to `Zulko`_ for helping code some parts of this project.
+Shoutout to `Zulko`_ for helping code and giving advice to 
+some parts of this project.
 
 We use `moviepy`_ and `ffmpeg`_ for video manipulation.
 We also use google's youtube api.
-
 Please feel free to `email & contact me`_ if you run into issues or just would like
 to talk about the future of this library!
 
