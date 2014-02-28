@@ -6,8 +6,6 @@ Lucas Ou-Yang 2014 -- http://codelucas.com
 Setup guide: http://guide.python-distribute.org/creation.html
 python setup.py sdist bdist_wininst upload
 """
-import warnings
-import sys
 try:
     from setuptools import setup
     setuptools_available = True
@@ -18,6 +16,7 @@ except ImportError:
 # Get the version from youtube_dl/version.py without importing the package
 exec(compile(open('vsummarize/version.py').read(),
              'vsummarize/version.py', 'exec'))
+
 requires = [
     'decorator',
     'gdata',

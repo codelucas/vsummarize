@@ -78,7 +78,7 @@ up this project in both platforms. However, I can't guarantee
 anything for the other platforms besides give installation advice.
 
 We use ``moviepy``, the python video manipulation library, which in turn depends 
-on the ``ffmpeg`` and ``pygame`` libraries.
+on the ``ffmpeg`` library.
 
 Be sure you have `pip <http://www.pip-installer.org/>`_.
 
@@ -88,9 +88,6 @@ The installation instructions are as follows:
 
 ::
 
-    $ brew install mercurial
-    $ brew install sdl sdl_image sdl_mixer sdl_ttf smpeg portmidi 
-    $ sudo pip install hg+http://bitbucket.org/pygame/pygame
     $ brew install ffmpeg
     $ pip install vsummarize
 
@@ -99,15 +96,11 @@ The installation instructions are as follows:
 
 ::
 
-    $ sudo apt-get install python-pygame
-    $ sudo apt-get install libsdl1.2-dev
-    $ sudo apt-get install libsmpeg-dev
-
     $ wget http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.2014-01-25.tar.gz
+    # open the above^ and install that
 
-    $ cd packages/pygame
-    $ python2.7 setup.py build
-    $ sudo python2.7 setup.py install
+
+::
 
     $ pip install vsummarize
 
@@ -127,10 +120,6 @@ actually using the summarized ``.mp4`` generation feature), you may notice on a 
 videos the ``.mp4`` generation fail due to an *OS memory exception*. This means
 that you don't have the RAM for ``ffmpeg`` to fork processes to subchunk out your video.
 
-Also, ``moviepy`` functions manipulate your terminal console environment.. it's a bit funky.
-You will know what i'm talking about when you see it. One way around this is to
-pipe your entire command into some file so moveipy's weird console never appears (it's
-getting piped into your file).
 
 License
 -------

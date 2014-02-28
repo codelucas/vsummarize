@@ -1,12 +1,10 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
-import sys
-import os
-
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.video.VideoClip import TextClip
 from moviepy.video.compositing.concatenate import concatenate
 from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
+
 
 def summarize(filepath, new_filename, hotclips):
     """
@@ -16,8 +14,8 @@ def summarize(filepath, new_filename, hotclips):
     # Only open the file once!
     video = VideoFileClip(filepath)
 
-    chunks = [ video.subclip(start, end)
-               for (start, end) in hotclips]
+    chunks = [video.subclip(start, end)
+              for (start, end) in hotclips]
 
     final_clip = concatenate(chunks)
 
@@ -37,4 +35,4 @@ def summarize(filepath, new_filename, hotclips):
 if __name__ == '__main__':
     summarize("TbQm5doF_Uc.mp4",
               "finished_from_video.mp4",
-              hotclips = [(1,5), (15,20), (35,40)])
+              hotclips=[(1, 5), (15, 20), (35, 40)])
