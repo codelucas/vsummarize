@@ -1,4 +1,4 @@
 gdata==2.0.18
 moviepy
-numpy==1.8.0
+numpy==1.21.0
 youtube-dl
